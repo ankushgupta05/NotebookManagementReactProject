@@ -4,7 +4,7 @@ import Noteitem from './Noteitem';
 import AddNote from './AddNote';
 
 
-const Notes = () => {
+const Notes = (props) => {
 
 
     const context = useContext(noteContext);
@@ -35,6 +35,7 @@ const Notes = () => {
         refClose.current.click()  // current means ref kaha point kar raha hai waha lick karo
         // console.log('updating new node ' , note)
         // e.preventDefault();  // bcz of this line page will not reload
+        props.showAlert("Commited Successfully", "success")
 
     }
 
@@ -46,7 +47,7 @@ const Notes = () => {
 
     return (
         <>
-            <AddNote />
+            <AddNote showAlert={props.showAlert} />
 
             <button type="button" className="btn btn-primary d-none" ref={ref} data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
@@ -63,23 +64,23 @@ const Notes = () => {
                                 <div className="mb-3">
                                     <label htmlFor="etitle" className="form-label">Title</label>
                                     <input type="text" className="form-control" id="etitle" value={note.etitle} name="etitle" minLength={5} required
-                                     aria-describedby="emailHelp" onChange={onChange} />
+                                        aria-describedby="emailHelp" onChange={onChange} />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label">Description</label>
                                     <input type="text" className="form-control" id="edescription" value={note.edescription} minLength={5} required
-                                     name="edescription" onChange={onChange} />
+                                        name="edescription" onChange={onChange} />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="etag" className="form-label">Tag</label>
-                                    <input type="text" className="form-control" id="etag" value={note.etag}   name="etag" minLength={5} required onChange={onChange} />
+                                    <input type="text" className="form-control" id="etag" value={note.etag} name="etag" minLength={5} required onChange={onChange} />
                                 </div>
 
                             </form>
                         </div>
                         <div className="modal-footer">
                             <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button disabled={note.etitle.length < 5  || note.edescription.length < 5} type="button" onClick={handleClick} className="btn btn-primary">Commit changes</button>
+                            <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" onClick={handleClick} className="btn btn-primary">Commit changes</button>
                         </div>
                     </div>
                 </div>
@@ -93,7 +94,7 @@ const Notes = () => {
                     {notes.length === 0 && 'No repo. to display'}
                 </div>
                 {notes.map((note) => {
-                    return <Noteitem key={note._id} updateNote={updateNote} note={note} />;  // we have pass prompt here
+                    return <Noteitem key={note._id} showAlert={props.showAlert} updateNote={updateNote} note={note} />;  // we have pass prompt here
                 })}
             </div>
         </>

@@ -31,8 +31,8 @@ const Navbar = () => {
               </ul>
               <form className="d-flex" role="search">
                 {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
-                <a className="btn btn-warning mx-2" href='/login'  role="button">Login</a>
-                <a className="btn btn-warning mx-2" href='/signup' role="button">SignUp</a>
+                <a className="btn btn-warning mx-1" href='/login'  role="button">Login</a>
+                <a className="btn btn-warning mx-1" href='/signup' role="button">SignUp</a>
               </form>
             </div>
           </div>
