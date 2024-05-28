@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Signup = (props) => {
 
   let history = useNavigate();
-  // let history = useHistory
+  // let history = useHistory 
 
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
 
