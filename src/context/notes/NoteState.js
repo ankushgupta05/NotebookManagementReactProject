@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import noteContext from "./noteContext";
-const host = "http://localhost:5000"
+// const host = "http://localhost:5000"
+const host = "http://mongodb+srv://ankushgupta0510:CsFPZiWLvF1uoASY@cluster0.5cprhpt.mongodb.net"
+/
 
 const NoteState = (props) => {
 
